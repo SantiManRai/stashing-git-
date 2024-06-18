@@ -1,2 +1,7 @@
 M : This prod ready code -done
 B: Fixed INC001 
+<<<<<<< Updated upstream
+=======
+B: Fixed INC002
+Assigned INC003 ... WIP
+>>>>>>> Stashed changes
