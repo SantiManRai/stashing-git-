@@ -1,0 +1,328 @@
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git
+$ mkdir stashing-git
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git
+$ cd stashing-git
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git
+$ git init
+Initialized empty Git repository in C:/Users/A/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git/.git/
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (master)
+$ touch file1
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (master)
+$ git add .
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (master)
+$ git commit -m "Initial Version"
+[master (root-commit) 7a882ab] Initial Version
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 file1
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (master)
+$ git log --oneline
+7a882ab (HEAD -> master) Initial Version
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (master)
+$ echo "M : This prod ready code -done">> file1
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   file1
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (master)
+$ echo "B: Fixed INC001 -done">> file1
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (master)
+$ cat file1
+M : This prod ready code -done
+B: Fixed INC001 -done
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (master)
+$ echo "B: Fixed INC002">> file1
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (master)
+$ cat file1
+M : This prod ready code -done
+B: Fixed INC001 -done
+B: Fixed INC002
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (master)
+$ cat file1
+M : This prod ready code -done
+B: Fixed INC001
+B: Fixed INC002
+Assigned INC003 ...WIP
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (master)
+$ git log --oneline
+7a882ab (HEAD -> master) Initial Version
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (master)
+$ cat file1
+M : This prod ready code -done
+B: Fixed INC001
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (master)
+$ git add .
+warning: in the working copy of 'file1', LF will be replaced by CRLF the next time Git touches it
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (master)
+$ git log --oneline
+7a882ab (HEAD -> master) Initial Version
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (master)
+$ git commit -m " B: Fixed INC001"
+[master 3245d3d]  B: Fixed INC001
+ 1 file changed, 2 insertions(+)
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (master)
+$ git log --oneline
+3245d3d (HEAD -> master)  B: Fixed INC001
+7a882ab Initial Version
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (master)
+$ cat file1
+M : This prod ready code -done
+B: Fixed INC001
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (master)
+$ git branch mybranch
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (master)
+$ git checkout mybranch
+Switched to branch 'mybranch'
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (mybranch)
+$ git log --oneline
+3245d3d (HEAD -> mybranch, master)  B: Fixed INC001
+7a882ab Initial Version
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (mybranch)
+$ cat file1
+M : This prod ready code -done
+B: Fixed INC001
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (mybranch)
+$ echo "B: Fixed INC002">> file1
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (mybranch)
+$ cat file1
+M : This prod ready code -done
+B: Fixed INC001
+B: Fixed INC002
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (mybranch)
+$ git add .
+warning: in the working copy of 'file1', LF will be replaced by CRLF the next time Git touches it
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (mybranch)
+$ git commit -m "B: Fixed INC002"
+[mybranch efef1e1] B: Fixed INC002
+ 1 file changed, 1 insertion(+)
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (mybranch)
+$ git log --oneline
+efef1e1 (HEAD -> mybranch) B: Fixed INC002
+3245d3d (master)  B: Fixed INC001
+7a882ab Initial Version
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (mybranch)
+$ git status
+On branch mybranch
+nothing to commit, working tree clean
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (mybranch)
+$ echo "Assigned INC003 ... WIP">> file1
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (mybranch)
+$ cat file1
+M : This prod ready code -done
+B: Fixed INC001
+B: Fixed INC002
+Assigned INC003 ... WIP
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (mybranch)
+$ git status
+On branch mybranch
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   file1
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (mybranch)
+$ ls -lrt
+total 1
+-rw-r--r-- 1 A 197121 88 Jun 18 04:40 file1
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (mybranch)
+$ git checkout master
+error: Your local changes to the following files would be overwritten by checkout:
+        file1
+Please commit your changes or stash them before you switch branches.
+Aborting
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (mybranch)
+$ git stash save "B : Stashing away work on INC003"
+warning: in the working copy of 'file1', LF will be replaced by CRLF the next time Git touches it
+Saved working directory and index state On mybranch: B : Stashing away work on INC003
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (mybranch)
+$ git log --oneline --decorate --graph
+* efef1e1 (HEAD -> mybranch) B: Fixed INC002
+* 3245d3d (master)  B: Fixed INC001
+* 7a882ab Initial Version
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (mybranch)
+$ git status
+On branch mybranch
+nothing to commit, working tree clean
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (mybranch)
+$ git stash list
+stash@{0}: On mybranch: B : Stashing away work on INC003
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (mybranch)
+$ git stash apply
+On branch mybranch
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   file1
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (mybranch)
+$ echo "B: Finished INC003 - Done" >> file1
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (mybranch)
+$ git add .
+warning: in the working copy of 'file1', LF will be replaced by CRLF the next time Git touches it
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (mybranch)
+$ git commit -m "B : Fixed INC003"
+[mybranch 550f3cc] B : Fixed INC003
+ 1 file changed, 2 insertions(+)
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (mybranch)
+$ git log --oneline
+550f3cc (HEAD -> mybranch) B : Fixed INC003
+efef1e1 B: Fixed INC002
+3245d3d (master)  B: Fixed INC001
+7a882ab Initial Version
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (mybranch)
+$ cat file1
+M : This prod ready code -done
+B: Fixed INC001
+B: Fixed INC002
+Assigned INC003 ... WIP
+B: Finished INC003 - Done
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (mybranch)
+$ git stash list
+stash@{0}: On mybranch: B : Stashing away work on INC003
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (mybranch)
+$ git checkout -
+Switched to branch 'master'
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (master)
+$ cat file1
+M : This prod ready code -done
+B: Fixed INC001
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (master)
+$ git stash apply
+Auto-merging file1
+CONFLICT (content): Merge conflict in file1
+On branch master
+Unmerged paths:
+  (use "git restore --staged <file>..." to unstage)
+  (use "git add <file>..." to mark resolution)
+        both modified:   file1
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (master)
+$ git add .
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (master)
+$ git commit -m "B: Fixed INC001"
+[master dddba6c] B: Fixed INC001
+ 1 file changed, 5 insertions(+)
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (master)
+$ git stash apply
+Auto-merging file1
+CONFLICT (content): Merge conflict in file1
+On branch master
+Unmerged paths:
+  (use "git restore --staged <file>..." to unstage)
+  (use "git add <file>..." to mark resolution)
+        both modified:   file1
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (master)
+$ subl
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (master)
+$ cat file1
+M : This prod ready code -done
+B: Fixed INC001
+<<<<<<< Updated upstream
+=======
+B: Fixed INC002
+Assigned INC003 ... WIP
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (master)
+$ vi file1
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (master)
+$ cat file1
+M : This prod ready code -done
+B: Fixed INC001
+B: Fixed INC002
+Assigned INC003 ... WIP
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (master)
+$ git stash list
+stash@{0}: On mybranch: B : Stashing away work on INC003
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (master)
+$ git stash show
+ file1 | 1 +
+ 1 file changed, 1 insertion(+)
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (master)
+$ git stash list
+stash@{0}: On mybranch: B : Stashing away work on INC003
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (master)
+$ git stash clear
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (master)
+$ git stash list
+
+A@DESKTOP-V86GNUT MINGW64 ~/Desktop/GIT Training/5. Branching Merging And Rebasing in Git/stashing-git (master)
+$
+
